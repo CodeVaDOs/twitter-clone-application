@@ -2,7 +2,7 @@ package demo.project.twitter.models.chat;
 
 import demo.project.twitter.model.BaseEntity;
 import demo.project.twitter.model.User;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import javax.persistence.JoinColumn;
@@ -21,11 +21,10 @@ import java.util.List;
     @Column(name = "chat_id")
     private Long chatId;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "initiator_id", referencedColumnName = "id")
     private User initiator;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "message_id", referencedColumnName = "id")
-    private List<Message> messages;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Message> messages;
 }

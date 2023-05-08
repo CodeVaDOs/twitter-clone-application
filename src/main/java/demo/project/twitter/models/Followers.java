@@ -17,7 +17,7 @@ import java.util.List;
     @AllArgsConstructor
 public class Followers extends BaseEntity {
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "follower_id", referencedColumnName = "id")
     private List<User> followers;
 
